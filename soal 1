@@ -1,0 +1,289 @@
+#include "stdafx.h"
+#include <iostream>
+
+using namespace std;
+
+typedef struct  polinom
+{
+	int bil, pangkat;
+	char x;
+};
+
+polinom p1[5], p2[6], p3[2];
+polinom tambah[8], kali[5*2], turun[5];
+
+int i = 0, ik = 0, ikur = 0;
+
+void fung_p1()
+{
+	//data index 0
+	p1[0].bil = 6;
+	p1[0].x = 'x';
+	p1[0].pangkat = 8;
+
+	//data index 1
+	p1[1].bil = 8;
+	p1[1].x = 'x';
+	p1[1].pangkat = 7;
+
+	//data index 2
+	p1[2].bil = 5;
+	p1[2].x = 'x';
+	p1[2].pangkat = 5;
+
+	//data index 3
+	p1[3].bil = 1;
+	p1[3].x = 'x';
+	p1[3].pangkat = 3;
+
+	//data index 4
+	p1[4].bil = 15;
+
+}
+
+void fung_p2()
+{
+	//data index 0
+	p2[0].bil = 3;
+	p2[0].x = 'x';
+	p2[0].pangkat = 9;
+
+	//data index 1
+	p2[1].bil = 4;
+	p2[1].x = 'x';
+	p2[1].pangkat = 7;
+
+	//data index 2
+	p2[2].bil = 3;
+	p2[2].x = 'x';
+	p2[2].pangkat = 4;
+
+	//data index 3
+	p2[3].bil = 2;
+	p2[3].x = 'x';
+	p2[3].pangkat = 3;
+
+	//data index 4
+	p2[4].bil = 2;
+	p2[4].x = 'x';
+	p2[4].pangkat = 2;
+
+	//data index 5
+	p2[5].bil = 10;
+}
+
+void fung_p3()
+{
+	//data index 0
+	p3[0].bil = 1;
+	p3[0].x = 'x';
+	p3[0].pangkat = 2;
+
+	//data index 1
+	p3[1].bil = 5;
+}
+
+void pengisian_polinom() {
+	fung_p1();
+	fung_p2();
+	fung_p3();
+}
+
+void penjumlahan() {
+	for (int a = 0; a < sizeof(p1) / sizeof(polinom); a++)
+	{
+		for (int b = 0; b < sizeof(p2) / sizeof(polinom); b++)
+		{
+			if (p1[a].pangkat == p2[b].pangkat)
+			{
+				tambah[i].bil = p1[a].bil + p2[b].bil;
+				tambah[i].x = p1[a].x;
+				tambah[i].pangkat = p1[a].pangkat;
+				i++;
+			}
+		}
+	}
+
+	for (int a = 0; a < sizeof(p1) / sizeof(polinom); a++)
+	{
+		if (p1[a].pangkat != tambah[0].pangkat)
+		{
+			if (p1[a].pangkat != tambah[1].pangkat)
+			{
+				if (p1[a].pangkat != tambah[2].pangkat)
+				{
+					tambah[i].bil = p1[a].bil;
+					tambah[i].x = p1[a].x;
+					tambah[i].pangkat = p1[a].pangkat;
+					i++;
+				}
+			}
+		}
+	}
+
+	for (int a = 0; a < sizeof(p2) / sizeof(polinom); a++)
+	{
+		if (p2[a].pangkat != tambah[0].pangkat)
+		{
+			if (p2[a].pangkat != tambah[1].pangkat)
+			{
+				if (p2[a].pangkat != tambah[2].pangkat)
+				{
+					tambah[i].bil = p2[a].bil;
+					tambah[i].x = p2[a].x;
+					tambah[i].pangkat = p2[a].pangkat;
+					i++;
+				}
+			}
+		}
+	}
+
+	for (i = 0; i < sizeof(tambah) / sizeof(polinom); i++)
+	{
+		cout << tambah[i].bil << tambah[i].x << tambah[i].pangkat << endl;
+	}
+}
+
+void pengurangan() {
+	for (int a = 0; a < sizeof(p1) / sizeof(polinom); a++)
+	{
+		for (int b = 0; b < sizeof(p2) / sizeof(polinom); b++)
+		{
+			if (p1[a].pangkat == p2[b].pangkat)
+			{
+				tambah[ikur].bil = p1[a].bil - p2[b].bil;
+				tambah[ikur].x = p1[a].x;
+				tambah[ikur].pangkat = p1[a].pangkat;
+				ikur++;
+			}
+		}
+	}
+
+	for (int a = 0; a < sizeof(p1) / sizeof(polinom); a++)
+	{
+		if (p1[a].pangkat != tambah[0].pangkat)
+		{
+			if (p1[a].pangkat != tambah[1].pangkat)
+			{
+				if (p1[a].pangkat != tambah[2].pangkat)
+				{
+					tambah[ikur].bil = p1[a].bil;
+					tambah[ikur].x = p1[a].x;
+					tambah[ikur].pangkat = p1[a].pangkat;
+					ikur++;
+				}
+			}
+		}
+	}
+
+	for (int a = 0; a < sizeof(p2) / sizeof(polinom); a++)
+	{
+		if (p2[a].pangkat != tambah[0].pangkat)
+		{
+			if (p2[a].pangkat != tambah[1].pangkat)
+			{
+				if (p2[a].pangkat != tambah[2].pangkat)
+				{
+					tambah[ikur].bil = p2[a].bil;
+					tambah[ikur].x = p2[a].x;
+					tambah[ikur].pangkat = p2[a].pangkat;
+					ikur++;
+				}
+			}
+		}
+	}
+
+	for (ikur = 0; ikur < sizeof(tambah) / sizeof(polinom); ikur++)
+	{
+		cout << tambah[ikur].bil << tambah[ikur].x << tambah[ikur].pangkat << endl;
+	}
+}
+
+void perkalian()
+{
+	for (int a = 0; a < sizeof(p1) / sizeof(polinom); a++)
+	{
+		for (int b = 0; b < sizeof(p3) / sizeof(polinom); b++)
+		{
+			kali[ik].bil = p1[a].bil * p3[b].bil;
+			kali[ik].x = p1[a].x;
+			kali[ik].pangkat = p1[a].pangkat + p3[b].pangkat;
+			ik++;
+		}
+	}
+
+	/*
+	for (int a = 0; a < sizeof(kali)/sizeof(polinom) ; a++)
+	{
+		for (int b = 0; b < sizeof(kali) / sizeof(polinom); b++)
+		{
+			if (kali[a].bil == kali[b].bil)
+			{
+				break;
+			}
+
+			if (kali[a].pangkat == kali[b].pangkat)
+			{
+				kali[a].bil += kali[b].bil;
+			}
+		}
+	} */
+
+	for (ik = 0; ik < sizeof(kali) / sizeof(polinom); ik++)
+	{
+		if (kali[ik].pangkat == 2)
+		{
+			kali[ik].x = 'x';
+		}
+
+		cout << kali[ik].bil << kali[ik].x << kali[ik].pangkat << endl;
+	}
+}
+
+void turunan()
+{
+	//2x^n-1
+	//2x^3 = 3.2x^2 = 6x^2
+	for (int a = 0; a < sizeof(p2)/sizeof(polinom); a++)
+	{
+		if (p2[a].pangkat == 0)
+		{
+			break;
+		}
+		else
+		{
+			turun[a].bil = p2[a].bil * p2[a].pangkat;
+			turun[a].x = 'x';
+			turun[a].pangkat = p2[a].pangkat - 1;
+		}
+	}
+	
+	for (int a = 0; a < sizeof(turun) / sizeof(polinom); a++)
+	{
+		cout << turun[a].bil << turun[a].x << turun[a].pangkat << endl;
+	}
+}
+
+int main()
+{
+	//Mengisi variabel polinom p1, p2,  p3
+	pengisian_polinom();
+
+	cout << "penjumlahan p1 + p2 : " << endl;
+	//penambahan
+	penjumlahan();
+
+	cout << "pengurangan p1 - p2 : " << endl;
+	//pengurangan
+	pengurangan();
+
+	cout << "perkalian p1 * p2 : " << endl;
+	//perkalian
+	perkalian();
+
+	cout << "perturunan p2 : " << endl;
+	//Turunan
+	turunan();
+
+	return 0;
+}
